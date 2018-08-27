@@ -1,6 +1,6 @@
 export default class Scene {
-  private readonly sceneWidth: number = 20;
-  private readonly sceneHeight: number = 20;
+  private readonly sceneWidth: number = 100;
+  private readonly sceneHeight: number = 100;
   private scenePixels: boolean[][];
 
   // TODO: can we refactor seed into an array of Pixels?
