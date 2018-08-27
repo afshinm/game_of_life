@@ -13,6 +13,10 @@ class App extends React.Component {
       {x: 10, y: 10, live: true},
       {x: 10, y: 11, live: true},
       {x: 10, y: 12, live: true},
+      {x: 11, y: 12, live: true},
+      {x: 12, y: 12, live: true},
+      {x: 12, y: 13, live: true},
+      {x: 12, y: 14, live: true},
     ]);
     this.game = game;
     this.width = game.scene.width;
@@ -26,8 +30,8 @@ class App extends React.Component {
   public generateNext(): void {
     setTimeout(() => {
       this.setState({pixels: this.game.nextGeneration()});
-      // this.generateNext();
-    }, 1000);
+      this.generateNext();
+    }, 100);
   }
 
   public componentDidMount() {
@@ -38,8 +42,6 @@ class App extends React.Component {
     const pixels = [];
     const size = 10;
     const state: any = this.state;
-
-    window.console.log(state.pixels);
 
     for (let x = 0; x < this.width;x++) {
       for (let y = 0; y < this.height;y++) {

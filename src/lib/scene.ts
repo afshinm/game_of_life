@@ -25,11 +25,10 @@ export default class Scene {
   }
 
   public setPixel(x: number, y: number, live: boolean): void {
-    window.console.log('set pixel', x, y, live, this.scenePixels[x]);
     this.scenePixels[x][y] = live;
   }
 
-  public getNeighbours(x: number, y: number): any[] {
+  public getNeighbours(x: number, y: number, pixels: boolean[][]): any[] {
     const neighbours: boolean[] = [];
 
     /*
@@ -39,38 +38,36 @@ export default class Scene {
      */
 
     if (y > 0) {
-      neighbours.push(this.pixels[x][y - 1]);
+      neighbours.push(pixels[x][y - 1]);
     }
 
     if (y < this.height - 1) {
-      neighbours.push(this.pixels[x][y + 1]);
+      neighbours.push(pixels[x][y + 1]);
     }
 
     if (x > 0) {
-      neighbours.push(this.pixels[x - 1][y]);
+      neighbours.push(pixels[x - 1][y]);
 
       if (y > 0) {
-        neighbours.push(this.pixels[x - 1][y - 1]);
+        neighbours.push(pixels[x - 1][y - 1]);
       }
 
       if (y < this.height - 1) {
-        neighbours.push(this.pixels[x - 1][y + 1]);
+        neighbours.push(pixels[x - 1][y + 1]);
       }
     }
 
     if (x < this.width - 1) {
-      neighbours.push(this.pixels[x + 1][y]);
+      neighbours.push(pixels[x + 1][y]);
 
       if (y > 0) {
-        neighbours.push(this.pixels[x + 1][y - 1]);
+        neighbours.push(pixels[x + 1][y - 1]);
       }
 
       if (y < this.height - 1) {
-        neighbours.push(this.pixels[x + 1][y + 1]);
+        neighbours.push(pixels[x + 1][y + 1]);
       }
     }
-
-    window.console.log(x, y, neighbours);
 
     return neighbours;
   }

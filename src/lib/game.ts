@@ -12,10 +12,12 @@ export default class Game {
   }
 
   public nextGeneration(): boolean[][] {
+    const pixels = JSON.parse(JSON.stringify(this.scene.pixels));
+
     for (let x = 0; x < this.scene.width; x++) {
       for (let y = 0; y < this.scene.height; y++) {
-        const pixel = this.scene.pixels[x][y];
-        const neighbours: boolean[] = this.scene.getNeighbours(x, y);
+        const pixel = pixels[x][y];
+        const neighbours: boolean[] = this.scene.getNeighbours(x, y, pixels);
         const lives: number = neighbours.filter(k => k).length;
 
         // window.console.log('lives', lives)
